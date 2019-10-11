@@ -20,18 +20,12 @@ class SearchService
   end
 
   def has_match(record)
-    match = false
+    str = record['Name'] + record['Type'] + record['Designed by']
 
-    record.each_value do |str|
-      str_match = true
-
-      text.split.each do |word|
-        str_match = false unless str.downcase.include? word
-      end
-
-      match = true if str_match
+    text.split.each do |word|
+      return false unless str.downcase.include? word
     end
 
-    match
+    true
   end
 end
