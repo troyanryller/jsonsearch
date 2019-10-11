@@ -2,8 +2,6 @@
 
 class SearchController < ApplicationController
   def show
-    result = SearchService.new(params[:text]).call
-
-    render json: { data: result }
+    render json: { data: SearchService.new(params[:text]).call }
   end
 end
