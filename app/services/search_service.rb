@@ -9,7 +9,7 @@ class SearchService
 
   def call
     data.each_with_object([]) do |record, acum|
-      acum << record if has_match(record)
+      acum << record if match?(record)
     end
   end
 
@@ -19,7 +19,7 @@ class SearchService
     @data = DataQuery.load
   end
 
-  def has_match(record)
+  def match?(record)
     str = record['Name'] + record['Type'] + record['Designed by']
 
     text.split.each do |word|
