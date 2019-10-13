@@ -1,0 +1,13 @@
+
+[1mFrom:[0m /home/nazar/projects/jsonsearch/spec/queries/data_query_spec.rb @ line 12 :
+
+     [1;34m7[0m:   subject { described_class.load}
+     [1;34m8[0m: 
+     [1;34m9[0m:   describe [31m[1;31m'[0m[31m#load[1;31m'[0m[31m[0m [32mdo[0m
+    [1;34m10[0m:       it [31m[1;31m'[0m[31mreturns [1;31m'[0m[31m[0m [32mdo[0m
+    [1;34m11[0m:         expect(subject.size).to eq([1;34m97[0m)
+ => [1;34m12[0m:         binding.pry
+    [1;34m13[0m:       [32mend[0m
+    [1;34m14[0m:   [32mend[0m
+    [1;34m15[0m: [32mend[0m
+
