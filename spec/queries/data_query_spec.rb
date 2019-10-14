@@ -16,7 +16,7 @@ RSpec.describe DataQuery do
       expect(subject.class) == type
     end
     it 'first element' do
-      # subject.first['Name'].to eq(NAME) doesent work
+      # subject.first['Name'].to eq(name) doesent work((
       subject.first['Name'] == name
       subject.first['Type'] == type
       subject.first['Designed by'] == designed_by
@@ -25,33 +25,32 @@ RSpec.describe DataQuery do
 
   describe 'match' do
     let(:record) { described_class.load.first }
-    subject { described_class }
 
     context 'Name' do
       it 'match' do
-        expect(subject.match?(record, 'a+')).to eq(record)
+        expect(described_class.match?(record, 'a+')).to eq(record)
       end
       it 'not a complete coincidence' do
-        expect(subject.match?(record, 'a')).to eq(record)
+        expect(described_class.match?(record, 'a')).to eq(record)
       end
       it 'nil' do
-        expect(subject.match?(record, 'B')).to eq(nil)
+        expect(described_class.match?(record, 'B')).to eq(nil)
       end
     end
     context 'Author' do
       it 'match' do
-        expect(subject.match?(record, 'arthur whitney')).to eq(record)
+        expect(described_class.match?(record, 'arthur whitney')).to eq(record)
       end
       it 'reverce' do
-        expect(subject.match?(record, 'whitney arthur')).to eq(record)
+        expect(described_class.match?(record, 'whitney arthur')).to eq(record)
       end
     end
     context 'Type' do
       it 'match' do
-        expect(subject.match?(record, 'array')).to eq(record)
+        expect(described_class.match?(record, 'array')).to eq(record)
       end
       it 'not exist' do
-        expect(subject.match?(record, '1234')).to eq(nil)
+        expect(described_class.match?(record, '1234')).to eq(nil)
       end
     end
   end

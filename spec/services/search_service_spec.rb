@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe SearchService do
-  SOURCE = DataQuery
   describe '#call' do
     context 'one record' do
       subject { described_class.new(text: 'C++', source: DataQuery).call }
