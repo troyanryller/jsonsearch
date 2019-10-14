@@ -3,9 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe SearchService do
+  SOURCE = DataQuery
   describe '#call' do
     context 'one record' do
-      subject { described_class.new('C++').call }
+      subject { described_class.new(text: 'C++', source: DataQuery).call }
 
       it 'size' do
         expect(subject.size).to eq(1)
@@ -17,7 +18,7 @@ RSpec.describe SearchService do
     end
 
     context 'few records' do
-      subject { described_class.new('Microsoft').call }
+      subject { described_class.new(text: 'Microsoft', source: DataQuery).call }
 
       it 'size' do
         expect(subject.size).to eq(8)
@@ -29,7 +30,7 @@ RSpec.describe SearchService do
     end
 
     context 'reverce search' do
-      subject { described_class.new('Matsumoto Yukihiro').call }
+      subject { described_class.new(text: 'Matsumoto Yukihiro', source: DataQuery).call }
 
       it 'size' do
         expect(subject.size).to eq(1)

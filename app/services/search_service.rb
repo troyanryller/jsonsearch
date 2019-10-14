@@ -1,31 +1,16 @@
 # frozen_string_literal: true
 
 class SearchService
-  attr_reader :text
+  attr_reader :text, :source
 
-  def initialize(text)
+  def initialize(text:, source:)
     @text = text.downcase
+    @source = source
   end
 
   def call
-    data.each_with_object([]) do |record, acum|
-      acum << record if match?(record)
-    end
-  end
-
-  private
-
-  def data
-    @data = DataQuery.load
-  end
-
-  def match?(record)
-    str = record['Name'] + record['Type'] + record['Designed by']
-
-    text.split.each do |word|
-      return false unless str.downcase.include? word
-    end
-
-    true
+    source.load.each_with_object([]) do |record, acum|
+      acum << source.match?(record, text)
+    end.compact
   end
 end
