@@ -8,7 +8,7 @@ class DataQuery
   def self.match?(record, text)
     str = record['Name'] + record['Type'] + record['Designed by']
 
-    text.split.each do |word|
+    text.downcase.split.each do |word|
       return nil unless str.downcase.include? word
     end
 

@@ -4,7 +4,7 @@ class SearchService
   attr_reader :text, :source
 
   def initialize(text:, source:)
-    @text = text.downcase
+    @text = text
     @source = source
   end
 
