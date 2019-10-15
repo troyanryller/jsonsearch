@@ -5,7 +5,7 @@ class DataQuery
     JSON.parse(File.open('storage/data.json').read)
   end
 
-  def self.match?(record, text)
+  def self.find_match(record, text)
     str = record.values_at('Name', 'Type', 'Designed by').join.downcase
 
     text.downcase.split.each do |word|

@@ -10,7 +10,7 @@ class SearchService
 
   def call
     source.load.each_with_object([]) do |record, acum|
-      acum << source.match?(record, text)
+      acum << source.find_match(record, text)
     end.compact
   end
 end
