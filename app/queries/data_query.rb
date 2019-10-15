@@ -6,7 +6,7 @@ class DataQuery
   end
 
   def self.match?(record, text)
-    str = record['Name'] + record['Type'] + record['Designed by']
+    str = record.values_at('Name', 'Type', 'Designed by').join.downcase
 
     text.downcase.split.each do |word|
       return nil unless str.downcase.include? word
