@@ -5,13 +5,13 @@ class DataQuery
     JSON.parse(File.open('storage/data.json').read)
   end
 
-  def self.find_match(record, text)
+  def self.match?(record, text)
     str = record.values_at('Name', 'Type', 'Designed by').join.downcase
 
     text.downcase.split.each do |word|
-      return nil unless str.downcase.include? word
+      return false unless str.downcase.include? word
     end
 
-    record
+    true
   end
 end

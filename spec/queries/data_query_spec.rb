@@ -28,29 +28,29 @@ RSpec.describe DataQuery do
 
     context 'Name' do
       it 'match' do
-        expect(described_class.find_match(record, 'a+')).to eq(record)
+        expect(described_class.match?(record, 'a+')).to eq(true)
       end
       it 'not a complete coincidence' do
-        expect(described_class.find_match(record, 'a')).to eq(record)
+        expect(described_class.match?(record, 'a')).to eq(true)
       end
       it 'nil' do
-        expect(described_class.find_match(record, 'B')).to eq(nil)
+        expect(described_class.match?(record, 'B')).to eq(false)
       end
     end
     context 'Author' do
       it 'match' do
-        expect(described_class.find_match(record, 'arthur whitney')).to eq(record)
+        expect(described_class.match?(record, 'arthur whitney')).to eq(true)
       end
       it 'reverce' do
-        expect(described_class.find_match(record, 'whitney arthur')).to eq(record)
+        expect(described_class.match?(record, 'whitney arthur')).to eq(true)
       end
     end
     context 'Type' do
       it 'match' do
-        expect(described_class.find_match(record, 'array')).to eq(record)
+        expect(described_class.match?(record, 'array')).to eq(true)
       end
       it 'not exist' do
-        expect(described_class.find_match(record, '1234')).to eq(nil)
+        expect(described_class.match?(record, '1234')).to eq(false)
       end
     end
   end
